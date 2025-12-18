@@ -1,0 +1,7 @@
+feature
+floor_area_m2
+building_age_years
+hvac_efficiency_score
+insulation_quality_score
+occupancy_rate
+baseline_energy_kwh
