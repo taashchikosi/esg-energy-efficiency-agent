@@ -4,7 +4,8 @@ from src.ml.predict import EnergySavingsPredictor
 st.set_page_config(page_title="ESG Energy Efficiency Agent", layout="wide")
 
 st.title("ESG Energy Efficiency Agent")
-st.caption("Live demo — building inputs → ML prediction → ESG impact estimates \n The model estimates post-intervention energy-savings potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics.")
+st.caption("Live demo — building inputs → ML prediction → ESG impact estimates")
+st.caption("The model estimates post-intervention energy-savings potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics.")
 
 @st.cache_resource
 def load_predictor():
