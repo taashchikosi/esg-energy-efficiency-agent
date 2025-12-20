@@ -80,7 +80,7 @@ def rag_answer(question: str, k: int = 5) -> str:
 # -----------------------------
 st.title("ESG Energy & Emissions Optimization Agent")
 st.caption("Live demo — building inputs → ML prediction → ESG impact estimates → Ask Questions")
-st.caption("The model estimates post-intervention energy-savings potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics.")
+st.caption("The model estimates post-intervention energy-savings potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics as below.")
 
 # -----------------------------
 # ML Predictor
