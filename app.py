@@ -116,11 +116,11 @@ inputs = {
     "baseline_energy_kwh": float(baseline_energy_kwh),
 }
 
-st.subheader("2) Prediction")
+st.subheader("2) Potential ROI")
 
 try:
     savings_pct = predictor.predict(inputs)
-    st.success(f"Predicted energy savings: **{savings_pct:.2%}**")
+    st.success(f"Predicted post-intervention energy savings: **{savings_pct:.2%}**")
 
     energy_saved_kwh = baseline_energy_kwh * savings_pct
     cost_saved = energy_saved_kwh * 0.25
