@@ -81,15 +81,21 @@ def rag_answer(question: str, k: int = 5) -> str:
 st.title("ESG Energy & Emissions Optimization Agent")
 st.subheader("AI Decision-Support Tool for Building Retrofit Prioritization")
 
-st.caption("This tool estimates post-intervention energy-savings, cost-savings, and emissions reduction potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics as below. It aims to help decision-makers decide where to spend limited retrofit capital first, and how confidently they can justify that choice.")
+st.caption("This tool estimates post-intervention energy-savings, cost-savings, and emissions reduction potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics as below. It's main goal is to help decision-makers decide where to spend limited retrofit capital first, and how confidently they can justify that choice.")
 
-st.subheader("How to use this tool")
+st.subheader("Examples of Decisions it Supports")
 
-st.caption("1. Enter the building’s current baseline characteristics.")
-st.caption("2. Allow the machine to predict potential ESG outcomes.")
-st.caption("3. Review estimated energy, cost, and emissions impacts.")
-st.caption("4. Use the Assistant to ask questions, understand assumptions, limitations, and governance implications.")
-st.caption("5. Apply insights for prioritisation — not certification.")
+st.caption("1. Prioritization Decisions - Which buildings have the highest savings potential?")
+st.caption("2. Capital Allocation Decisions - Where should we deploy limited budget or resources?")
+st.caption("3. Scenario Comparison Decisions - How sensitive are outcomes to changes in building characteristics?")
+st.caption("4. Governance & Denfensibility Decisions - Can we responsibly communicate this insight to executives, investors, or ESG reports?")
+
+st.subheader("How to use this tool - The Decision Workflow")
+
+st.caption("1. Input baseline characteristics -> this defines the current state of the building")
+st.caption("2. Allow the machine to predict potential ESG outcomes -> Review estimated energy, cost, & emissions impacts.")
+st.caption("3. Use the Assistant to ask questions -> Interogate the rationale, understand assumptions, limitations, & governance implications.")
+st.caption("4. Decide next action —> investigate further, prioritise or deprioritize buildings")
 
 # -----------------------------
 # ML Predictor
