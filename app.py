@@ -10,7 +10,7 @@ from langchain_community.vectorstores import Chroma
 # -----------------------------
 # Page Config
 # -----------------------------
-st.set_page_config(page_title="ESG Energy Efficiency Agent", layout="wide")
+st.set_page_config(page_title="ESG Energy & Emissions Optimization Agent", layout="wide")
 
 # -----------------------------
 # RAG Setup (loads Chroma DB from rag_project_artifacts/vector_store)
