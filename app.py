@@ -81,7 +81,7 @@ def rag_answer(question: str, k: int = 5) -> str:
 st.title("ESG Energy & Emissions Optimization Agent")
 st.subheader("AI Decision-Support Tool for Building Retrofit Prioritization")
 
-st.caption("This tool estimates post-intervention energy-savings, cost-savings, and emissions reduction potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics as below. Then it provides evidence-grounded explanations, limitations, and governance context to support responsible ESG-aligned investment and prioritization decision-making - not a certified rating or compliance tool. ")
+st.caption("This tool estimates post-intervention energy-savings, cost-savings, and emissions reduction potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics as below. Then it provides evidence-grounded explanations, limitations, and governance context to support responsible ESG-aligned investment and prioritization decision-making. ")
 
 st.subheader("How to use this tool")
 
