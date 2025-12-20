@@ -7,7 +7,7 @@ from pathlib import Path
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 
-st.set_page_config(page_title="ESG Energy Efficiency Agent", layout="wide")
+st.set_page_config(page_title="ESG Energy Efficiency & Emissions Optimization Agent", layout="wide")
 
 # -----------------------------
 # RAG Setup (loads Chroma DB from rag_project/vector_store)
