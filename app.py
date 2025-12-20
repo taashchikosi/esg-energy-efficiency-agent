@@ -20,7 +20,7 @@ if not os.environ.get("OPENAI_API_KEY"):
     RAG_READY = False
 
 BASE_DIR = Path(__file__).resolve().parent
-RAG_DB_DIR = BASE_DIR / "rag_project" / "vector_store"
+RAG_DB_DIR = BASE_DIR / "rag_project_artifacts" / "vector_store"
 
 @st.cache_resource
 def load_vectordb(persist_dir: Path):
