@@ -80,8 +80,16 @@ def rag_answer(question: str, k: int = 5) -> str:
 # -----------------------------
 st.title("ESG Energy & Emissions Optimization Agent")
 st.subheader("AI Decision-Support Tool for Building Retrofit Prioritization")
-st.caption("Live demo — building inputs → ML prediction → ESG impact estimates → Ask Questions")
-st.caption("The model estimates post-intervention energy-savings potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics as below.")
+
+st.caption("This tool estimates post-intervention energy-savings, cost-savings, and emissions reduction potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics as below. Then it provides evidence-grounded explanations, limitations, and governance context to support responsible ESG-aligned investment and prioritization decision-making - not a certified rating or compliance tool. ")
+
+st.subheader("How to use this tool")
+
+st.caption("1. Enter the building’s current baseline characteristics.")
+st.caption("2. Allow the machine to predict potential ESG outcomes.")
+st.caption("3. Review estimated energy, cost, and emissions impacts.")
+st.caption("4. Use the Assistant to understand assumptions, limitations, and governance implications.")
+st.caption("5. Apply insights for prioritisation — not certification.")
 
 # -----------------------------
 # ML Predictor
@@ -92,21 +100,23 @@ def load_predictor():
 
 predictor = load_predictor()
 
-st.subheader("1) Building Inputs")
+st.subheader("1) Building Baseline")
+
+st.caption("Describe the current (pre-retrofit) state of the building. These inputs define the baseline against which potential improvements are estimated.")
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    floor_area_m2 = st.number_input("Floor area (m²)", 100.0, 200000.0, 5000.0, step=100.0)
-    building_age_years = st.slider("Building age (years)", 0, 100, 25)
+    floor_area_m2 = st.number_input("Gross Floor area (m²)", 100.0, 200000.0, 5000.0, step=100.0)
+    building_age_years = st.slider("Building Age (years since construction)", 0, 100, 25)
 
 with col2:
-    hvac_efficiency_score = st.slider("HVAC efficiency score", 0.4, 1.0, 0.7, 0.01)
-    insulation_quality_score = st.slider("Insulation quality score", 0.3, 1.0, 0.6, 0.01)
+    hvac_efficiency_score = st.slider("HVAC Efficiency (relative score)", 0.4, 1.0, 0.7, 0.01)
+    insulation_quality_score = st.slider("Envelope/Insulation quality (relative score)", 0.3, 1.0, 0.6, 0.01)
 
 with col3:
-    occupancy_rate = st.slider("Occupancy rate", 0.5, 1.0, 0.85, 0.01)
-    baseline_energy_kwh = st.number_input("Baseline annual energy (kWh)", 10000.0, 50_000_000.0, 750000.0, step=10000.0)
+    occupancy_rate = st.slider("Average Occupancy Utilisation %", 0.5, 1.0, 0.85, 0.01)
+    baseline_energy_kwh = st.number_input("Baseline annual energy consumption (kWh)", 10000.0, 50_000_000.0, 750000.0, step=10000.0)
 
 inputs = {
     "floor_area_m2": float(floor_area_m2),
@@ -117,20 +127,22 @@ inputs = {
     "baseline_energy_kwh": float(baseline_energy_kwh),
 }
 
-st.subheader("2) Potential ROI")
+st.subheader("2) Estimated Post-Intervention Impact")
+
+st.caption("Estimated outcomes assuming representative retrofit interventions applied to similar buildings.")
 
 try:
     savings_pct = predictor.predict(inputs)
-    st.success(f"Predicted post-intervention energy savings: **{savings_pct:.2%}**")
+    st.success(f"Predicted energy savings: **{savings_pct:.2%}**")
 
     energy_saved_kwh = baseline_energy_kwh * savings_pct
     cost_saved = energy_saved_kwh * 0.25
     tco2_saved = (energy_saved_kwh * 0.7) / 1000
 
     c1, c2, c3 = st.columns(3)
-    c1.metric("Energy saved (kWh/yr)", f"{energy_saved_kwh:,.0f}")
-    c2.metric("Cost saved (AUD/yr)", f"${cost_saved:,.0f}")
-    c3.metric("Emissions reduced (tCO₂e/yr)", f"{tco2_saved:,.1f}")
+    c1.metric("Estimated annual energy reduction (kWh/year)", f"{energy_saved_kwh:,.0f}")
+    c2.metric("Indicative operating cost reduction (AUD/year)", f"${cost_saved:,.0f}")
+    c3.metric("Estimated Scope 2 emissions reduction (tCO₂e/yr)", f"{tco2_saved:,.1f}")
 
 except Exception as e:
     st.error(f"Prediction failed: {e}")
@@ -141,7 +153,6 @@ st.divider()
 # RAG Knowledge Base Assistant (same page, below ML)
 # -----------------------------
 st.header("🧠 Decision Rationale & Evidence Assistant")
-st.caption("Provides evidence-grounded explanations, limitations, and governance context to support responsible decision-making. No certified ratings.")
 
 if not RAG_READY:
     st.warning(
@@ -168,3 +179,5 @@ else:
             "4) What are the model limitations?\n"
             "5) When should human expert review be triggered?\n"
         )
+
+st.caption("This demo uses synthetic and simulation-informed data to demonstrate decision-support workflows. Outputs are directional and intended for prioritisation, not certification.")
