@@ -79,7 +79,7 @@ def rag_answer(question: str, k: int = 5) -> str:
 # Single-page layout: ML first, then RAG
 # -----------------------------
 st.title("ESG Energy & Emissions Optimization Agent")
-st.subtitle("AI Decision-Support Tool for Building Retrofit Prioritization")
+st.subheader("AI Decision-Support Tool for Building Retrofit Prioritization")
 st.caption("Live demo — building inputs → ML prediction → ESG impact estimates → Ask Questions")
 st.caption("The model estimates post-intervention energy-savings potential by learning from patterns in retrofit outcomes of buildings with similar pre-intervention characteristics as below.")
 
