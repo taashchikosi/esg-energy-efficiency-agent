@@ -12,3 +12,4 @@ langchain-openai>=0.1.20
 chromadb>=0.5.5
 langchain-community
 tiktoken
+requests
