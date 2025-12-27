@@ -194,33 +194,34 @@ st.caption("This demo uses synthetic and simulation-informed data to demonstrate
 # ===============================
 
 import base64
+import streamlit as st
 
 st.markdown("---")
 st.markdown("## 📄 Full Consulting Report")
 
-st.write(
-    "The full consulting-grade report supporting this decision-support tool "
-    "is available below. It documents the decision context, data strategy, "
-    "modeling approach, governance design, and deployment scope."
-)
+pdf_file = "ESG_Energy_and_Emissions_Optimization_Agent.pdf"
 
-pdf_path = Path(__file__).resolve().parent / "ESG_Energy_and_Emissions_Optimization_Agent.pdf"
-
-with open(pdf_path, "rb") as f:
+with open(pdf_file, "rb") as f:
     pdf_bytes = f.read()
 
+# 1) Download button (always works)
+st.download_button(
+    label="⬇️ Download Report (PDF)",
+    data=pdf_bytes,
+    file_name=pdf_file,
+    mime="application/pdf",
+)
 
+# 2) Open in new tab link (best viewing experience)
 base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
+pdf_data_url = f"data:application/pdf;base64,{base64_pdf}"
 
-pdf_display = f"""
-<iframe 
-    src="data:application/pdf;base64,{base64_pdf}" 
-    width="100%" 
-    height="900px" 
-    style="border: none;">
-</iframe>
-"""
+st.markdown(
+    f'<a href="{pdf_data_url}" target="_blank" style="text-decoration:none;">'
+    f'🔗 Open Report in New Tab</a>',
+    unsafe_allow_html=True
+)
 
-with st.expander("📘 View Full Report"):
-    st.markdown(pdf_display, unsafe_allow_html=True)
+st.caption("Tip: Use “Open Report in New Tab” for the best reading experience.")
+
 
