@@ -204,7 +204,7 @@ st.write(
     "modeling approach, governance design, and deployment scope."
 )
 
-with open("ESG Energy Emissions Optimization Agent.pdf", "rb") as f:
+with open("ESG Energy & Emissions Optimization Agent.pdf", "rb") as f:
     pdf_bytes = f.read()
 
 base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
