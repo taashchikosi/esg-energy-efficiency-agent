@@ -188,3 +188,36 @@ else:
         )
 
 st.caption("This demo uses synthetic and simulation-informed data to demonstrate decision-support workflows. Outputs are directional and intended for prioritisation, not certification.")
+
+# ===============================
+# Full Consulting Report (PDF)
+# ===============================
+
+import base64
+
+st.markdown("---")
+st.markdown("## 📄 Full Consulting Report")
+
+st.write(
+    "The full consulting-grade report supporting this decision-support tool "
+    "is available below. It documents the decision context, data strategy, "
+    "modeling approach, governance design, and deployment scope."
+)
+
+with open("ESG Energy Emissions Optimization Agent.pdf", "rb") as f:
+    pdf_bytes = f.read()
+
+base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
+
+pdf_display = f"""
+<iframe 
+    src="data:application/pdf;base64,{base64_pdf}" 
+    width="100%" 
+    height="900px" 
+    style="border: none;">
+</iframe>
+"""
+
+with st.expander("📘 View Full Report"):
+    st.markdown(pdf_display, unsafe_allow_html=True)
+
